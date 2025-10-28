@@ -82,10 +82,6 @@
   display: block;
   object-fit: cover;
   object-position: center;
-
-  @media (width > 376px) {
-    block-size: 696px;
-  }
 }
 
 .card__image-label {
@@ -101,9 +97,9 @@
   opacity: 0.5;
   mix-blend-mode: hard-light;
 
-  @supports((text-stroke: 1px #FFFFFF) or (-webkit-text-stroke: 1px #FFFFFF)) {
-    -webkit-text-stroke: 1px #FFFFFF;
-    text-stroke: 1px #FFFFFF;
+  @supports((text-stroke: var(--text-stroke-value)) or (-webkit-text-stroke: var(--text-stroke-value))) {
+    -webkit-text-stroke: var(--text-stroke-value);
+    text-stroke: var(--text-stroke-value);
     text-shadow: none;
   }
 }
