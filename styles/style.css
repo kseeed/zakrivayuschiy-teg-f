@@ -57,11 +57,9 @@
 
 /* CONTENT */
 
-.content {}
-
 .card {
   block-size: 100%;
-  margin-block-end: 51px;
+  margin-block-end: 50px;
 }
 
 .card__title {
@@ -69,12 +67,13 @@
   font-size: var(--main-font-size);
   font-variation-settings: 'wght' var(--main-font-weight-bold);
   background-color: var(--bg-color);
-  border-bottom: 2px solid var(--main-color);
   padding: 4px 10px;
 }
 
 .card__image {
   position: relative;
+  border-top: 2px solid var(--main-color);
+  border-bottom: 2px solid var(--main-color);
 }
 
 .card__image-picture {
@@ -83,6 +82,10 @@
   display: block;
   object-fit: cover;
   object-position: center;
+
+  @media (width > 376px) {
+    block-size: 696px;
+  }
 }
 
 .card__image-label {
@@ -123,15 +126,42 @@
   padding: 0 25px 25px;
   display: flex;
   flex-direction: row;
-  gap: 12px;
+  gap: 7px;
   justify-content: flex-end;
 }
 
 .button {
+  position: relative;
   border: 2px solid var(--main-color);
+  color: var(--bg-color);
   background-color: var(--bg-color);
-  block-size: 35px;
+  block-size: 38px;
   padding: 9px 17px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.button:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--main-color);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.5s ease-in-out;
+}
+
+.button:hover:after {
+  transform: scaleX(1);
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  box-shadow: 2px 2px 0 0 var(--main-color);
+  transition: box-shadow 0.3s ease;
 }
 
 .card__like-button {
@@ -139,51 +169,79 @@
 }
 
 .button__text {
-  color: var(--main-color);
+  position: relative;
+  z-index: 10;
   font-family: var(--accent-font-family, fantasy);
   font-size: 14px;
-  font-weight: 400;
+  font-weight: var(--accent-font-weight);
   line-height: 12.6px;
+  white-space: nowrap;
+  mix-blend-mode: difference;
 }
 
 .card__icon-button {
-  inline-size: 34px;
-  block-size: 35px;
+  inline-size: 36px;
+  block-size: 37px;
   background-color: transparent;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
+  transition: border 0.3s ease;
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  border: 2px solid var(--main-color);
+  transition: border 0.3s ease;
 }
 
 .like-icon {
   display: block;
   align-self: center;
+  justify-self: center;
 }
 
 /* TO SAVE FOR THE MEMORIES */
 
-.footer {}
+.final_action {
+  margin-block-end: 100px;
+}
 
 .save__btn {
   display: flex;
   flex-direction: column;
   gap: 8px;
   align-items: center;
-  inline-size: 306px;
+  max-inline-size: 306px;
+  inline-size: 100%;
   block-size: 84px;
   padding: 15px 20px;
-  margin: 0 auto;
+  margin: 0 35px;
+
+  @media (width > 375px) {
+    flex-direction: row;
+    gap: 8px;
+    justify-content: space-between;
+    max-inline-size: 338px;
+    block-size: 55px;
+    margin: 0 auto;
+  }
 }
 
-.button__text {
-  color: var(--main-color);
-  font-family: var(--accent-font-family, fantasy);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 12.6px;
-  white-space: nowrap;
+.save__btn svg {
+  position: relative;
+  z-index: 1;
+  mix-blend-mode: difference;
 }
 
-.icon {
+.save__icon {
+  display: block;
   inline-size: 28px;
+
+  @media (width > 375px) {
+    inline-size: 21px;
+  }
 }
 
 /* POPUP */
@@ -193,12 +251,22 @@
   block-size: 191px;
   padding: 30px 40px;
 }
+
+.popup::backdrop {
+  background-color: rgb(0 0 0 / 0.75);
+}
+
+.popup:not([open]) {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .popup__message {
   display: flex;
   flex-direction: row;
   gap: 20px;
   align-items: center;
-  margin-block-end: 30px;
+  margin-block-end: 29px;
 }
 
 .popup__text {
@@ -208,12 +276,13 @@
   font-weight: 400;
   line-height: 21px;
   text-transform: uppercase;
-  max-inline-size: 234px;
+  display: block;
+  inline-size: 234px;
 }
 
 .popup__icon {
   display: block;
-  inline-size: ;
+  inline-size: 39px;
 }
 
 .ok-button {
