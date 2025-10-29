@@ -29,13 +29,14 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  block-size: var(--section-block-size);
   justify-content: center;
   align-items: center;
 }
 
 .page_section {
-  inline-size: clamp(375px, calc(375px + (700 - 375) * (100vw - 375px) / (1440 - 375)), 700px);
-  block-size: clamp(327px, calc(327px + 41 * (100vw - 375px) / 1065), 368px);
+  inline-size: var(--section-inline-size);
+  
   margin: 0 auto;
   background-color: var(--bg-color);
   border: 2px solid var(--main-color);
@@ -78,7 +79,6 @@
 
 .card__image-picture {
   inline-size: 100%;
-  block-size: 100%;
   display: block;
   object-fit: cover;
   object-position: center;
@@ -92,7 +92,7 @@
   color: var(--main-color);
   font-family: var(--accent-font-family, fantasy);
   font-size: 14px;
-  font-weight: 400;
+  font-weight: var(--accent-font-weight);
   text-transform: uppercase;
   opacity: 0.5;
   mix-blend-mode: hard-light;
@@ -269,22 +269,21 @@
 
 .save__btn {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 8px;
+  justify-content: center;
   align-items: center;
-  max-inline-size: 306px;
-  inline-size: 100%;
-  block-size: 84px;
   padding: 15px 20px;
-  margin: 0 35px;
+  block-size: 100%;
+}
 
-  @media (width > 375px) {
-    flex-direction: row;
-    gap: 8px;
-    justify-content: space-between;
-    max-inline-size: 338px;
-    block-size: 55px;
-    margin: 0 auto;
+@media (width <= 375px) {
+  .save__btn {
+    flex-direction: column;
+  }
+
+  .save__btn svg {
+    block-size: 2em;
   }
 }
 
@@ -306,12 +305,19 @@
 /* POPUP */
 
 .popup {
-  inline-size: 341px;
-  block-size: 191px;
-  padding: 30px 40px;
+  max-inline-size: 353px;
+  min-block-size: 191px;
+  padding: 30px;
 }
 
-.popup::backdrop {
+@media (width <=375px) {
+  .popup {
+    inline-size: 100%;
+    padding: 30px 40px;
+  }
+}
+
+.popup[open]::backdrop {
   background-color: rgb(0 0 0 / 0.75);
 }
 
@@ -320,19 +326,23 @@
   pointer-events: none;
 }
 
-.popup__message {
+body:has(.popup[open]) {
+  overflow: hidden;
+}
+
+.popup[open] .popup__message {
   display: flex;
   flex-direction: row;
   gap: 20px;
   align-items: center;
-  margin-block-end: 29px;
+  margin-block-end: 30px;
 }
 
 .popup__text {
   color: var(--main-color);
   font-family: var(--accent-font-family);
   font-size: 14px;
-  font-weight: 400;
+  font-weight: var(--accent-font-weight);
   line-height: 21px;
   text-transform: uppercase;
   display: block;
