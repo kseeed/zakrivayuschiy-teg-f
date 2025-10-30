@@ -45,7 +45,7 @@
   border: 2px solid var(--main-color);
 }
 
-.header__title {  
+.header__title {
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
   font-weight: var(--accent-font-weight);
 }
