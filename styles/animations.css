@@ -9,13 +9,13 @@
 ✦ button__text — для обозначения текстового элемента внутри кнопки
 
 */
-@keyframes bigger_heart {
+@keyframes fade_in {
     to {
         transform: scale(1.25);
         }
 }
 
-@keyframes sparks {
+@keyframes blink {
     to {
         opacity: 1;
     }
