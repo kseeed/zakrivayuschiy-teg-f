@@ -28,9 +28,10 @@
   flex-direction: column;
   gap: 20px;
   inline-size: var(--section-inline-size);
-  padding: clamp(122px, calc(122px + 8 * (100vw - 375px) / 1065), 130px) 0;
+  padding: var(--header-padding-value) 0;
   justify-content: center;
   align-items: center;
+  text-align: center;
   margin: 100px auto;
   background-color: var(--bg-color);
   border: 2px solid var(--main-color);
@@ -38,7 +39,7 @@
   text-transform: uppercase;
 }
 
-.page__section {
+.page-section {
   inline-size: var(--section-inline-size);
   margin: 0 auto;
   background-color: var(--bg-color);
@@ -364,7 +365,7 @@ body:has(.popup[open]) {
   overflow: hidden;
 }
 
-.popup[open] .popup__message {
+.popup__message {
   display: flex;
   flex-direction: row;
   gap: 20px;

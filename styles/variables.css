@@ -14,4 +14,5 @@
     --text-stroke-value: 1px #FFFFFF;
     --section-inline-size: clamp(375px, calc(375px + (700 - 375) * (100vw - 375px) / (1440 - 375)), 700px);
     --section-block-size: clamp(327px, calc(327px + 41 * (100vw - 375px) / 1065), 368px);
+    --header-padding-value: clamp(122px, calc(122px + 8 * (100vw - 375px) / 1065), 130px);
 }
