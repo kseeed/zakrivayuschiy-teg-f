@@ -79,14 +79,10 @@
 
 .card__image-picture {
   inline-size: 100%;
-  max-block-size: 371px;
+  block-size: var(--picture-height-value);
   display: block;
   object-fit: cover;
   object-position: center;
-
-  @media (width > 375px) {
-    max-block-size: 696px;
-  }
 }
 
 .filter-grayscale {
